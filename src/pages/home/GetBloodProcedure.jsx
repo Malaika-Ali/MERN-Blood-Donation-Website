@@ -4,7 +4,9 @@ import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import reg from '../../assets/reg.avif';
 // import noti from '../../assets/noti.avif'
 import contact from '../../assets/contact.png';
-import pic from '../../assets/new.png'
+// import pic from '../../assets/new.png'
+import pic from '../../assets/finding.png'
+
 
 const GetBloodProcedure = () => {
   return (
@@ -54,7 +56,7 @@ const GetBloodProcedure = () => {
               />
             </div>
             <p className="mt-4 text-sm lg:text-base text-gray-700">
-              Notifications are sent to donors within a 3km radius, alerting them of your blood requirement.
+              We will find the donors in your area with your same blood group.
             </p>
           </div>
         </div>
@@ -72,7 +74,7 @@ const GetBloodProcedure = () => {
             />
           </div>
           <p className="mt-4 text-sm lg:text-base text-gray-700">
-            A donor will contact you to coordinate the donation process. You can finalize the time and place for the donation together.
+            A list of donors will be shown to you along with  their phone numbers and email address so that you can contact them.
           </p>
         </div>
       </div>

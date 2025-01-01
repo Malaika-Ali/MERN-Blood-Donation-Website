@@ -34,10 +34,10 @@ const router = createBrowserRouter([
                 path: "/request-blood",
                 element: <RequestBloodPage/>
             },
-            {
-                path: "/request-detail/:id",
-                element: <RequestDetail/>
-            },
+            // {
+            //     path: "/request-detail/:id",
+            //     element: <RequestDetail/>
+            // },
         ]
     },
     {

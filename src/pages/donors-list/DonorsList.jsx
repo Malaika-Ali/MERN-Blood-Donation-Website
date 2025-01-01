@@ -36,20 +36,25 @@ const CareerCard = ({ donor }) => {
 const DonorsList = () => {
 
   const [donors, setDonors] = useState([])
+    const [currentUser, setCurrentUser] = useState(null)
+  
 
   useEffect(() => {
-    // const fetchCurrentUser = async () => {
-    //   try {
-    //     const response = await axios.get("/api/v1/users/current-user", {
-    //       withCredentials: true
-    //     });
-    //     setCurrentUser(response.data.data);
-    //     console.log(currentUser)
-    //   } catch (error) {
-    //     console.error("Error fetching current user:", error);
-    //   }
-    // };
+    const fetchCurrentUser = async () => {
+      try {
+        const response = await axios.get("/api/v1/users/current-user", {
+          withCredentials: true
+        });
+        setCurrentUser(response?.data.data);
+      } catch (error) {
+        console.error("Error fetching current user:", error);
+      }
+    };
 
+    fetchCurrentUser();
+  }, []);
+
+  useEffect(() => {
     const fetchDonors=async () => {
       try {
         const response = await axios.get('/api/v1/requests/get-donors');
@@ -66,15 +71,13 @@ const DonorsList = () => {
     }
     };
 
-    // fetchCurrentUser();
     fetchDonors()
   }, []);
-
-
-   // Filter unique donors based on their ID
     
 
-
+   if (currentUser === null) {
+    return <div>Loading...</div>; // Show a loading state while checking authentication
+}
 
     return (
       <section className="py-14 md:py-24 bg-red-50 text-black">

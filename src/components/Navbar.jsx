@@ -14,7 +14,7 @@ const Navbar = () => {
         const response = await axios.get("/api/v1/users/current-user", {
           withCredentials: true
         });
-        setCurrentUser(response.data.data);
+        setCurrentUser(response?.data.data);
       } catch (error) {
         console.error("Error fetching current user:", error);
       }

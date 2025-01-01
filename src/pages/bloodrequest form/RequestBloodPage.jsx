@@ -1,7 +1,27 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import RequestForm from "./RequestForm";
+import axios from 'axios'
 
 const RequestBloodPage = () => {
+  const [currentUser, setCurrentUser] = useState(null)
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const response = await axios.get("/api/v1/users/current-user", {
+          withCredentials: true
+        });
+        setCurrentUser(response.data.data);
+      } catch (error) {
+        console.error("Error fetching current user:", error);
+      }
+    };
+
+    fetchCurrentUser();
+  }, []);
+
+  if (currentUser === null) {
+    return <div>Loading...</div>; // Show a loading state while checking authentication
+}
   return (
     <section className="flex items-center flex-col justify-center py-14 md:py-8 bg-red-50 text-zinc-900 overflow-hidden">
       <div className="container px-4 mx-auto">
